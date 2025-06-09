@@ -1,11 +1,23 @@
+import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
+import AppShell from './components/AppShell'
+import Library from './pages/Library'
+import Mix from './pages/Mix'
+import Match from './pages/Match'
+import Settings from './pages/Settings'
 
 function App() {
   return (
-    <div className="flex h-screen items-center justify-center bg-gray-100 dark:bg-gray-900">
-      <h1 className="text-3xl font-bold text-gray-800 dark:text-gray-100">
-        Hello PaintMix
-      </h1>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<AppShell />}> 
+          <Route index element={<Navigate to="/library" replace />} />
+          <Route path="library" element={<Library />} />
+          <Route path="mix" element={<Mix />} />
+          <Route path="match" element={<Match />} />
+          <Route path="settings" element={<Settings />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   )
 }
 
